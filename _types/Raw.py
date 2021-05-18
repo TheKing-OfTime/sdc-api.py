@@ -4,26 +4,26 @@ from dataclasses import dataclass, field
 @dataclass
 class SdcRawGuildStatus:
     """
-    Тип данных хронящий исходную информацию о значках гильдии, прямиком с API.
+    Тип данных хранящий исходную информацию о значках гильдии, прямиком с API.
     Так же тип хранит битовые згачения всех существующих значков
     """
-    status: int = 0
-    sitedev: hex = 0x1
-    verefied: hex = 0x2
-    partner: hex = 0x4
-    favorite: hex = 0x8
-    bughunter: hex = 0x10
-    easteregg: hex = 0x20
-    botdev: hex = 0x40
-    youtube: hex = 0x80
-    twitch: hex = 0x100
-    spamhunt: hex = 0x200
+    status:     int = 0
+    sitedev:    hex = 0x1
+    verified:   hex = 0x2
+    partner:    hex = 0x4
+    favorite:   hex = 0x8
+    bughunter:  hex = 0x10
+    easteregg:  hex = 0x20
+    botdev:     hex = 0x40
+    youtube:    hex = 0x80
+    twitch:     hex = 0x100
+    spamhunt:   hex = 0x200
 
 
 @dataclass
 class SdcRawGuild:
     """
-    Тип данных хронящий исходную информацию о гильдии, прямиком с API.
+    Тип данных хранящий исходную информацию о гильдии, прямиком с API.
 
     Пример:
         SdcRawGuild.avatar: "a_8f05534e4f750cf535988ae8a91fe9ad",
@@ -40,25 +40,25 @@ class SdcRawGuild:
         SdcRawGuild.upCount: 299
         SdcRawGuild.tags: "communication,programming,community"
     """
-    avatar: str = None
-    lang: str = None
-    name: str = None
-    description: str = None
-    invite: str = None
-    owner: str = None
-    online: int = 0
-    members: int = 0
-    bot: int = 0
-    boost: int = 0
-    status: SdcRawGuildStatus = SdcRawGuildStatus
-    upCount: int = 0
-    tags: str = ''
+    avatar:         str = None
+    lang:           str = None
+    name:           str = None
+    description:    str = None
+    invite:         str = None
+    owner:          str = None
+    online:         int
+    members:        int
+    bot:            int
+    boost:          int
+    status:         SdcRawGuildStatus = SdcRawGuildStatus
+    upCount:        int
+    tags:           str
 
 
 @dataclass
 class SdcRawGuildRates:
     """
-    Тип данных хронящий исходную информацию о голосах гильдии, прямиком с API.
+    Тип данных хранящий исходную информацию о голосах гильдии, прямиком с API.
 
     Пример:
 
@@ -76,7 +76,7 @@ class SdcRawGuildRates:
 @dataclass
 class SdcRawUserRates:
     """
-    Тип данных хронящий исходную информацию о голосах пользователя, прямиком с API.
+    Тип данных хранящий исходную информацию о голосах пользователя, прямиком с API.
 
     Пример:
     SdcRawUserRates.rates:
@@ -93,7 +93,7 @@ class SdcRawUserRates:
 @dataclass
 class SdcRawGuildPlace:
     """
-    Тип данных хронящий исходную информацию о месте гильдии в топе на сайте, прямиком с API.
+    Тип данных хранящий исходную информацию о месте гильдии в топе на сайте, прямиком с API.
 
     Пример:
 
@@ -105,7 +105,7 @@ class SdcRawGuildPlace:
 @dataclass
 class SdcRawNikaWarns:
     """
-    Тип данных хронящий исходную информацию о количестве варнов в системе Nika, прямиком с API.
+    Тип данных хранящий исходную информацию о количестве варнов в системе Nika, прямиком с API.
 
     Пример:
 
@@ -113,6 +113,6 @@ class SdcRawNikaWarns:
     SdcRawGuildPlace.type: "user"
     SdcRawGuildPlace.warns: 3
     """
-    id: int
-    type: str
-    warns: int
+    id:     int
+    type:   str
+    warns:  int
