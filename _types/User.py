@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 @dataclass
 class SdcUserRates:
     """
-    Тип данных хронящий обработанную информацию о голосах пользователя.
+    Тип данных хранящий обработанную информацию о голосах пользователя.
 
     Пример:
 
@@ -14,10 +14,10 @@ class SdcUserRates:
     SdcGuildRates.minus_count: 15                                # количество гильдий которым пользователь поставил "-"
     """
 
-    plus: list
-    minus: list
-    plus_count: int = field(init=False)
-    minus_count: int = field(init=False)
+    plus:           list
+    minus:          list
+    plus_count:     int = field(init=False)
+    minus_count:    int = field(init=False)
 
     def __post_init__(self):
         self.plus_count = len(self.plus)

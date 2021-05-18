@@ -5,25 +5,25 @@ from .Raw import SdcRawGuildStatus
 @dataclass
 class SdcGuildStatus:
     """
-    Тип данных хронящий обработанную информацию о значках гильдии.
+    Тип данных хранящий обработанную информацию о значках гильдии.
     """
-    sitedev: bool = False
-    verefied: bool = False
-    partner: bool = False
-    favorite: bool = False
-    bughunter: bool = False
-    easteregg: bool = False
-    botdev: bool = False
-    youtube: bool = False
-    twitch: bool = False
-    spamhunt: bool = False
+    sitedev:    bool
+    verified:   bool
+    partner:    bool
+    favorite:   bool
+    bughunter:  bool
+    easteregg:  bool
+    botdev:     bool
+    youtube:    bool
+    twitch:     bool
+    spamhunt:   bool
     raw: SdcRawGuildStatus = SdcRawGuildStatus
 
 
 @dataclass
 class SdcGuild:
     """
-    Тип данных хронящий обработанную информацию о гильдии.
+    Тип данных хранящий обработанную информацию о гильдии.
 
     Пример:
         SdcRawGuild.id: 0
@@ -41,26 +41,26 @@ class SdcGuild:
         SdcRawGuild.upCount: 299
         SdcRawGuild.tags: ["communication", "programming", "community"]
     """
-    id: int = 0
-    avatar: str = None
-    lang: str = "ru"
-    name: str = None
-    description: str = None
-    invite: str = None
-    owner: str = None
-    online: int = 0
-    members: int = 0
-    bot: int = 0
-    boost: int = 0
-    status: SdcGuildStatus = SdcGuildStatus
-    upCount: int = 0
-    tags: list = field(default=list)
+    id:             int
+    avatar:         str = None
+    lang:           str = "ru"
+    name:           str = None
+    description:    str = None
+    invite:         str = None
+    owner:          str = None
+    online:         int
+    members:        int
+    bot:            int
+    boost:          int
+    status:         SdcGuildStatus = SdcGuildStatus
+    upCount:        int
+    tags:           list = field(default=list)
 
 
 @dataclass
 class SdcGuildRates:
     """
-    Тип данных хронящий обработанную информацию о голосах гильдии.
+    Тип данных хранящий обработанную информацию о голосах гильдии.
 
     Пример:
 
@@ -69,10 +69,10 @@ class SdcGuildRates:
     SdcGuildRates.plus_count: 15                                 # количество пользователей поставивших "+"
     SdcGuildRates.minus_count: 15                                # количество пользователей поставивших "-"
     """
-    plus: list
-    minus: list
-    plus_count: int = field(init=False)
-    minus_count: int = field(init=False)
+    plus:           list
+    minus:          list
+    plus_count:     int = field(init=False)
+    minus_count:    int = field(init=False)
 
     def __post_init__(self):
         self.plus_count = len(self.plus)
@@ -82,7 +82,7 @@ class SdcGuildRates:
 @dataclass
 class SdcGuildPlace:
     """
-    Тип данных хронящий обработанную информацию о месте гильдии в топе на сайте.
+    Тип данных хранящий обработанную информацию о месте гильдии в топе на сайте.
 
     Пример:
 
