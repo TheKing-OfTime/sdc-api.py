@@ -1,7 +1,6 @@
-import aiohttp
 import sdc_api._types as _types
 import time
-from sdc_api.classes.Lib import RateLimits as RL
+from sdc_api.classes.Lib import Querier
 
 
 def convert_to_SdcGuildStatus(raw: _types.SdcRawGuildStatus):
@@ -21,43 +20,40 @@ def convert_to_SdcGuildStatus(raw: _types.SdcRawGuildStatus):
 
     return SdcGuildStatus
 
-
 class Monitoring:
     def __init__(self, token: str):
         self.SDC_token = token
+        self.querier = Querier()
 
     async def fetch_guild_raw(self, _id: int):
         _id = int(_id)
-        if time.time() - RL.LASTREQUEST > RL.DEFAULT:
-            RL.LASTREQUEST = time.time()
-            async with aiohttp.ClientSession() as session:
-                response = await session.get(
-                    f"https://api.server-discord.com/v2/guild/{_id}",
-                    headers={"Authorization": f"SDC {self.SDC_token}"})
 
-            data = await response.json()
+        response = await self.querier.execute_get_query(
+            f"https://api.server-discord.com/v2/guild/{_id}",
+            headers={"Authorization": f"SDC {self.SDC_token}"}
+        )
 
-            SdcRawGuildStatus           = _types.SdcRawGuildStatus
-            SdcRawGuildStatus.status    = data["status"]
+        data = await response.json()
 
-            SdcRawGuild             = _types.SdcRawGuild
-            SdcRawGuild.avatar      = data["avatar"]
-            SdcRawGuild.lang        = data["lang"]
-            SdcRawGuild.name        = data["name"]
-            SdcRawGuild.description = data["des"]
-            SdcRawGuild.invite      = data["invite"]
-            SdcRawGuild.owner       = data["owner"]
-            SdcRawGuild.online      = data["online"]
-            SdcRawGuild.members     = data["members"]
-            SdcRawGuild.bot         = data["bot"]
-            SdcRawGuild.boost       = data["boost"]
-            SdcRawGuild.status      = SdcRawGuildStatus
-            SdcRawGuild.upCount     = data["upCount"]
-            SdcRawGuild.tags        = data["tags"]
+        SdcRawGuildStatus           = _types.SdcRawGuildStatus
+        SdcRawGuildStatus.status    = data["status"]
 
-            return SdcRawGuild
-        else:
-            raise RuntimeError("Слишком частые запросы.\nСтандартный лимит: 2 секунды")
+        SdcRawGuild             = _types.SdcRawGuild
+        SdcRawGuild.avatar      = data["avatar"]
+        SdcRawGuild.lang        = data["lang"]
+        SdcRawGuild.name        = data["name"]
+        SdcRawGuild.description = data["des"]
+        SdcRawGuild.invite      = data["invite"]
+        SdcRawGuild.owner       = data["owner"]
+        SdcRawGuild.online      = data["online"]
+        SdcRawGuild.members     = data["members"]
+        SdcRawGuild.bot         = data["bot"]
+        SdcRawGuild.boost       = data["boost"]
+        SdcRawGuild.status      = SdcRawGuildStatus
+        SdcRawGuild.upCount     = data["upCount"]
+        SdcRawGuild.tags        = data["tags"]
+
+        return SdcRawGuild
 
     async def get_guild(self, _id: int):
         _id = int(_id)
@@ -86,42 +82,34 @@ class Monitoring:
     async def fetch_guild_place(self, _id: int):
         _id = int(_id)
 
-        if time.time() - RL.LASTREQUEST > RL.DEFAULT:
-            RL.LASTREQUEST = time.time()
-            async with aiohttp.ClientSession() as session:
-                response = await session.get(
-                    f"https://api.server-discord.com/v2/guild/{_id}/place",
-                    headers={"Authorization": f"SDC {self.SDC_token}"})
+        response = await self.querier.execute_get_query(
+            f"https://api.server-discord.com/v2/guild/{_id}/place",
+            headers={"Authorization": f"SDC {self.SDC_token}"}
+        )
 
-            data = await response.json()
+        data = await response.json()
 
-            SdcGuildPlace = _types.SdcGuildPlace
+        SdcGuildPlace = _types.SdcGuildPlace
 
-            SdcGuildPlace.place  = data["place"]
+        SdcGuildPlace.place  = data["place"]
 
-            return SdcGuildPlace
-        else:
-            raise RuntimeError("Слишком частые запросы.\nСтандартный лимит: 2 секунды")
+        return SdcGuildPlace
 
     async def fetch_guild_rate_raw(self, _id: int):
         _id = int(_id)
 
-        if time.time() - RL.LASTREQUEST > RL.DEFAULT:
-            RL.LASTREQUEST = time.time()
-            async with aiohttp.ClientSession() as session:
-                response = await session.get(
-                    f"https://api.server-discord.com/v2/guild/{_id}/rated",
-                    headers={"Authorization": f"SDC {self.SDC_token}"})
+        response = await self.querier.execute_get_query(
+            f"https://api.server-discord.com/v2/guild/{_id}/rated",
+            headers={"Authorization": f"SDC {self.SDC_token}"}
+        )
 
-            data = await response.json()
+        data = await response.json()
 
-            SdcRawGuildRates = _types.SdcRawGuildRates
+        SdcRawGuildRates = _types.SdcRawGuildRates
 
-            SdcRawGuildRates.rates = data
+        SdcRawGuildRates.rates = data
 
-            return SdcRawGuildRates
-        else:
-            raise RuntimeError("Слишком частые запросы.\nСтандартный лимит: 2 секунды")
+        return SdcRawGuildRates
 
     async def get_guild_rate(self, _id):
         _id = int(_id)
@@ -147,22 +135,18 @@ class Monitoring:
     async def fetch_user_rate_raw(self, _id: int):
         _id = int(_id)
 
-        if time.time() - RL.LASTREQUEST > RL.DEFAULT:
-            RL.LASTREQUEST = time.time()
-            async with aiohttp.ClientSession() as session:
-                response = await session.get(
-                    f"https://api.server-discord.com/v2/guild/{_id}/rated",
-                    headers={"Authorization": f"SDC {self.SDC_token}"})
+        response = await self.querier.execute_get_query(
+            f"https://api.server-discord.com/v2/guild/{_id}/rated",
+            headers={"Authorization": f"SDC {self.SDC_token}"}
+        )
 
-            data = await response.json()
+        data = await response.json()
 
-            SdcRawUserRates = _types.SdcRawUserRates
+        SdcRawUserRates = _types.SdcRawUserRates
 
-            SdcRawUserRates.rates = data
+        SdcRawUserRates.rates = data
 
-            return SdcRawUserRates
-        else:
-            raise RuntimeError("Слишком частые запросы.\nСтандартный лимит: 2 секунды")
+        return SdcRawUserRates
 
     async def get_user_rate(self, _id):
         _id = int(_id)
