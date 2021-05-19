@@ -1,19 +1,21 @@
 # sdc-api.py
-Враппер для https://api.server-discord.com/v2
-Документация к API: https://dosc.server-discord.com/
+* Враппер для https://api.server-discord.com/v2
+* Документация к API: https://dosc.server-discord.com/
 
 ## Установка
 
 ### Чтобы установить враппер нужно:
-1. Создать в корневой папке вашего проэкта папку sdc_api.
+1. Создать в корневой папке вашего проекта папку sdc_api.
 2. Скопировать в неё содержимое этого репозитория.
+
+# Внимание!
+## Враппер полностью асинхронен. Любые вызовы функций следует проводить только в асинхронных функциях
 
 ## Использование
 
 ### Враппер включает в себя 3 основных класса:
 
-# Внимание!
-## Враппер полностью асинхронен. Любые вызовы функций следует проводить только в асинхронных функциях
+
 
 #### Monitoring
 
@@ -51,11 +53,13 @@ from discord.ext import commands
 
 class BotsSDC(commands.Cog):
 
-  def __init__(self, bot):
-  self.bot = bot
+    def __init__(self, bot):
+    self.bot = bot
 
-  @commands.Cog.listener()
-   async def on_ready(self):
-      bots = sdc_api.Bots(self.bot, SDC_TOKEN)
-      bots.create_loop()  #Как аргумент можно время в минутах. Раз в это количество минут будет отправляться статистика. 
+    @commands.Cog.listener()
+    async def on_ready(self):
+        bots = sdc_api.Bots(self.bot, SDC_TOKEN)
+        bots.create_loop()  #Как аргумент можно время в минутах. Раз в это количество минут будет отправляться статистика.
+
+bot.add_cog(BotsSDC(bot))
 ```
