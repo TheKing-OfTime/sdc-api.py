@@ -18,20 +18,26 @@ class Querier:
 
     async def execute_get_query(self, *args, **kwargs):
         await self.query_lock.acquire()
+        response = None
 
-        async with aiohttp.ClientSession() as session:
-            response = await session.get(*args, **kwargs)
+        try:
+            async with aiohttp.ClientSession() as session:
+                response = await session.get(*args, **kwargs)
+        finally:
+            asyncio.get_event_loop().create_task(self._wait_ratelimit())
 
-        asyncio.get_event_loop().create_task(self._wait_ratelimit())
         return response
 
     async def execute_post_query(self, *args, **kwargs):
         await self.query_lock.acquire()
+        response = None
 
-        async with aiohttp.ClientSession() as session:
-            response = await session.post(*args, **kwargs)
+        try:
+            async with aiohttp.ClientSession() as session:
+                response = await session.post(*args, **kwargs)
+        finally:
+            asyncio.get_event_loop().create_task(self._wait_ratelimit())
 
-        asyncio.get_event_loop().create_task(self._wait_ratelimit())
         return response
 
     async def _wait_ratelimit(self):
