@@ -20,9 +20,10 @@ class Monitoring(Cog):
                 data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
             )
 
-            await self.bot.get_channel(810967184397434921).send(f"SDC Status updated: {await res.json()}")
+            print(f"SDC Status updated: {await res.json()}")
         except Exception as error:
             print(error)
+
 
 def setup(bot):
     bot.add_cog(Monitoring(bot))

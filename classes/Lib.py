@@ -1,6 +1,7 @@
 import asyncio
 import aiohttp
 
+
 class Querier:
     """
     Объект для последовательного выполнения запросов с кулдауном.
