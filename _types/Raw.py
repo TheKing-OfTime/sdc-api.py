@@ -40,19 +40,21 @@ class SdcRawGuild:
         SdcRawGuild.upCount: 299
         SdcRawGuild.tags: "communication,programming,community"
     """
+
+    online:         int
+    members:        int
+    bot:            int
+    boost:          int
+    upCount:        int
+    tags:           str
+    owner:          str = None
     avatar:         str = None
     lang:           str = None
     name:           str = None
     description:    str = None
     invite:         str = None
-    owner:          str = None
-    online:         int
-    members:        int
-    bot:            int
-    boost:          int
-    status:         SdcRawGuildStatus = SdcRawGuildStatus
-    upCount:        int
-    tags:           str
+
+    status: SdcRawGuildStatus = SdcRawGuildStatus
 
 
 @dataclass

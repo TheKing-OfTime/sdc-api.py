@@ -5,7 +5,7 @@ Sdc = Monitoring("")
 
 
 async def test():
-    response = await Sdc.get_guild(433242520034738186)
-    print(response.status.youtube, response.status.sitedev)
+    response = await Sdc.get_user_rate(500020124515041283)
+    print(response.plus_count, response.minus_count)
 
 asyncio.run(test())

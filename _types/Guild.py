@@ -42,19 +42,19 @@ class SdcGuild:
         SdcRawGuild.tags: ["communication", "programming", "community"]
     """
     id:             int
+    online:         int
+    members:        int
+    bot:            int
+    boost:          int
+    upCount:        int
+    tags:           list = field(default=list)
     avatar:         str = None
     lang:           str = "ru"
     name:           str = None
     description:    str = None
     invite:         str = None
     owner:          str = None
-    online:         int
-    members:        int
-    bot:            int
-    boost:          int
     status:         SdcGuildStatus = SdcGuildStatus
-    upCount:        int
-    tags:           list = field(default=list)
 
 
 @dataclass
@@ -71,12 +71,8 @@ class SdcGuildRates:
     """
     plus:           list
     minus:          list
-    plus_count:     int = field(init=False)
-    minus_count:    int = field(init=False)
-
-    def __post_init__(self):
-        self.plus_count = len(self.plus)
-        self.minus_count = len(self.minus)
+    plus_count:     int
+    minus_count:    int
 
 
 @dataclass
