@@ -6,15 +6,13 @@ class Querier:
     Объект для последовательного выполнения запросов с кулдауном.
     На данный момент, кулдаун составляет 2 секунды (ограничение API)
     """
-    RATELIMIT_SECONDS: int = 2
+    RATELIMIT_SECONDS:  int = 2
+    query_lock:         asyncio.Lock = asyncio.Lock()
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(Querier, cls).__new__(cls)
         return cls.instance
-
-    def __init__(self):
-        self.query_lock = asyncio.Lock()
 
     async def execute_get_query(self, *args, **kwargs):
         await self.query_lock.acquire()
