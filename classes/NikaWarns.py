@@ -1,31 +1,28 @@
-import aiohttp
 import sdc_api._types as _types
 import time
-from sdc_api.classes.Lib import RateLimits as RL
+from sdc_api.classes.Lib import Querier
 
 
 class NikaWarns:
 
     def __init__(self, token):
         self.SDC_token = token
+        self.querier = Querier()
 
     async def fetch_warns(self, _id):
         _id = int(_id)
-        if time.time() - RL.LASTREQUEST > RL.DEFAULT:
-            RL.LASTREQUEST = time.time()
-            async with aiohttp.ClientSession() as session:
-                response = await session.get(
-                    f"https://api.server-discord.com/v2/warns/{_id}",
-                    headers={"Authorization": f"SDC {self.SDC_token}"})
 
-            data = await response.json()
+        response = await self.querier.execute_get_query(
+            f"https://api.server-discord.com/v2/warns/{_id}",
+            headers={"Authorization": f"SDC {self.SDC_token}"}
+        )
 
-            SdcNikaWarns = _types.SdcRawNikaWarns
+        data = await response.json()
 
-            SdcNikaWarns.id     = data["id"]
-            SdcNikaWarns.type   = data["type"]
-            SdcNikaWarns.warns  = data["warns"]
+        SdcNikaWarns = _types.SdcRawNikaWarns
 
-            return SdcNikaWarns
-        else:
-            raise RuntimeError("Слишком частые запросы.\nСтандартный лимит: 2 секунды")
+        SdcNikaWarns.id     = data["id"]
+        SdcNikaWarns.type   = data["type"]
+        SdcNikaWarns.warns  = data["warns"]
+
+        return SdcNikaWarns
