@@ -1,6 +1,6 @@
 import aiohttp
-import time
 import _types
+import time
 from classes.Lib import RateLimits as RL
 
 
