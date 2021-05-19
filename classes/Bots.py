@@ -21,8 +21,8 @@ class Bots:
 
         Global._time = time
         try:
-            self.bot.load_extension("extension.default_extension")
+            self.bot.load_extension("sdc_api.classes.extension.default_extension")
         except Exception as e:
             print(e)
         else:
-            print(f"Цикл успешно запущен. Статистика будет обновляться каждые {Global._time} минут")
+            print(f"SDC_API: Цикл успешно запущен. Статистика будет обновляться каждые {Global._time} минут")

@@ -1,7 +1,7 @@
 import aiohttp
-import _types
+import sdc_api._types as _types
 import time
-from classes.Lib import RateLimits as RL
+from sdc_api.classes.Lib import RateLimits as RL
 
 
 def convert_to_SdcGuildStatus(raw: _types.SdcRawGuildStatus):
