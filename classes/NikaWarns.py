@@ -12,12 +12,10 @@ class NikaWarns:
     async def fetch_warns(self, _id):
         _id = int(_id)
 
-        response = await self.querier.execute_get_query(
+        data = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/warns/{_id}",
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
-
-        data = await response.json()
 
         SdcNikaWarns = _types.SdcRawNikaWarns
 
