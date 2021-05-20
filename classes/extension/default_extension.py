@@ -20,7 +20,7 @@ class Monitoring(Cog):
                 data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
             )
 
-            print(f"SDC Status updated: {await res.json()}")
+            print(f"SDC Status updated: {res}")
         except Exception as error:
             print(error)
 

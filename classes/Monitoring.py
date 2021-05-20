@@ -29,15 +29,13 @@ class Monitoring:
     async def fetch_guild_raw(self, _id: int):
         _id = int(_id)
 
-        response = await self.querier.execute_get_query(
+        data = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}",
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
 
-        data = await response.json()
-
         SdcRawGuildStatus = _types.SdcRawGuildStatus
-        SdcRawGuildStatus.status = data["status"]
+        SdcRawGuildstatus = data["status"]
 
         SdcRawGuild = _types.SdcRawGuild
         SdcRawGuild.avatar = data["avatar"]
@@ -83,12 +81,10 @@ class Monitoring:
     async def fetch_guild_place(self, _id: int):
         _id = int(_id)
 
-        response = await self.querier.execute_get_query(
+        data = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}/place",
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
-
-        data = await response.json()
 
         SdcGuildPlace = _types.SdcGuildPlace
 
@@ -99,12 +95,10 @@ class Monitoring:
     async def fetch_guild_rate_raw(self, _id: int):
         _id = int(_id)
 
-        response = await self.querier.execute_get_query(
+        data = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}/rated",
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
-
-        data = await response.json()
 
         SdcRawGuildRates = _types.SdcRawGuildRates
 
@@ -136,12 +130,10 @@ class Monitoring:
     async def fetch_user_rate_raw(self, _id: int):
         _id = int(_id)
 
-        response = await self.querier.execute_get_query(
+        data = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}/rated",
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
-
-        data = await response.json()
 
         SdcRawUserRates = _types.SdcRawUserRates
 
