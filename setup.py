@@ -1,10 +1,10 @@
 import setuptools
 
-with open("README.rst", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="sdc_api",
+    name="TheKingOfTime/sdc_api",
     version="1.0.1",
     author="TheKingOfTime",
     author_email="artem.matvienko0@gmai.com",
@@ -18,4 +18,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    python_requires=">= 3.7",
 )
