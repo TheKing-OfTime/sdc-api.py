@@ -1,6 +1,6 @@
 # sdc-api.py
 * Враппер для https://api.server-discord.com/v2
-* Документация к API: https://dosc.server-discord.com/
+* Документация к API: https://docs.server-discord.com/
 
 ## Установка
 
