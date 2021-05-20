@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="TheKingOfTime/sdc_api",
+    name="sdc_api_py",
     version="1.0.1",
     author="TheKingOfTime",
     author_email="artem.matvienko0@gmai.com",
