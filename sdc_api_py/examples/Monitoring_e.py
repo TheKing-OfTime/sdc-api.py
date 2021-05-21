@@ -1,11 +1,22 @@
 import asyncio
-from classes.Monitoring import Monitoring
+import sdc_api_py
 
-Sdc = Monitoring("")
+USER_ID = 348444859360608256
+
+GUILD_ID = 669961614434500620
+
+TOKEN = "" #SDC token. Можно получить на странице бота
+
+Monitoring = sdc_api_py.Monitoring(TOKEN)
 
 
 async def test():
-    response = await Sdc.get_user_rate(500020124515041283)
-    print(response.plus_count, response.minus_count)
+    guild = await Monitoring.get_guild(GUILD_ID)
+
+    guild_place = await Monitoring.fetch_guild_place(GUILD_ID)
+
+    guild_rete = await Monitoring.get_guild_rate(GUILD_ID)
+
+    user_rete = await Monitoring.get_user_rate(USER_ID)
 
 asyncio.run(test())
