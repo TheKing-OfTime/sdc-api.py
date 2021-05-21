@@ -5,7 +5,7 @@
 ## Установка
 
 ### Чтобы установить враппер нужно:
-1. Создать в корневой папке вашего проекта папку sdc_api.
+1. Создать в корневой папке вашего проекта папку sdc_api_py.
 2. Скопировать в неё содержимое этого репозитория.
 
 Или написать в терминале
@@ -26,9 +26,9 @@ pip install sdc_api_py
 #### Monitoring
 
 ```py
-import sdc_api
+import sdc_api_py
 
-monitoring = sdc_api.Monitoring(SDC_TOKEN)
+monitoring = sdc_api_py.Monitoring(SDC_TOKEN)
 
 ...
 sdc_guild = await monitoring.get_guild(id)  # Использовать в асинхронной функции
@@ -43,9 +43,9 @@ sdc_user_rate = await monitoring.get_user_rate(id)  # Использовать �
 #### NikaWarns
 
 ```py
-import sdc_api
+import sdc_api_py
 
-Nika = sdc_api.NikaWarns(SDC_TOKEN)
+Nika = sdc_api_py.NikaWarns(SDC_TOKEN)
 
 ...
 warns = await Nika.fetch_warns(id)  # Использовать в асинхронной функции
@@ -54,7 +54,7 @@ warns = await Nika.fetch_warns(id)  # Использовать в асинхро
 #### Bots
 
 ```py
-import sdc_api
+import sdc_api_py
 from discord.ext import commands
 
 class BotsSDC(commands.Cog):
@@ -64,8 +64,8 @@ class BotsSDC(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        bots = sdc_api.Bots(self.bot, SDC_TOKEN)
-        bots.create_loop()  #Как аргумент можно время в минутах. Раз в это количество минут будет отправляться статистика.
+        bots = sdc_api_py.Bots(self.bot, SDC_TOKEN)
+        bots.create_loop()  #Как аргумент можно использовать время в минутах. Раз в это количество минут будет отправляться статистика.
 
 bot.add_cog(BotsSDC(bot))
 ```
