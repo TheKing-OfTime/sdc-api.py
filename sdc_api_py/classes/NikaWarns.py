@@ -1,6 +1,6 @@
-import sdc_api._types as _types
+import sdc_api_py._types as _types
 import time
-from sdc_api.classes.Lib import Querier
+from sdc_api_py.classes.Lib import Querier
 
 
 class NikaWarns:
