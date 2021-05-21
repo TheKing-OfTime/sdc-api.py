@@ -4,7 +4,7 @@ from sdc_api_py.classes.Lib import Querier
 
 
 def convert_to_SdcGuildStatus(raw: _types.SdcRawGuildStatus):
-    SdcGuildStatus = _types.SdcGuildStatus
+    SdcGuildStatus = _types.SdcGuildStatus()
     SdcGuildStatus.raw = raw
 
     SdcGuildStatus.sitedev = bool(raw.status & 1)
@@ -34,10 +34,10 @@ class Monitoring:
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
 
-        SdcRawGuildStatus = _types.SdcRawGuildStatus
+        SdcRawGuildStatus = _types.SdcRawGuildStatus()
         SdcRawGuildstatus = data["status"]
 
-        SdcRawGuild = _types.SdcRawGuild
+        SdcRawGuild = _types.SdcRawGuild()
         SdcRawGuild.avatar = data["avatar"]
         SdcRawGuild.lang = data["lang"]
         SdcRawGuild.name = data["name"]
@@ -60,7 +60,7 @@ class Monitoring:
         Raw = await self.fetch_guild_raw(_id)
         extension = "gif" if Raw.avatar.startswith("a_") else "png"
 
-        SdcGuild = _types.SdcGuild
+        SdcGuild = _types.SdcGuild()
         SdcGuild.avatar = f"https://cdn.discordapp.com/icons/{_id}/{Raw.avatar}.{extension}"
         SdcGuild.lang = Raw.lang
         SdcGuild.name = Raw.name
@@ -86,7 +86,7 @@ class Monitoring:
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
 
-        SdcGuildPlace = _types.SdcGuildPlace
+        SdcGuildPlace = _types.SdcGuildPlace()
 
         SdcGuildPlace.place = data["place"]
 
@@ -100,7 +100,7 @@ class Monitoring:
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
 
-        SdcRawGuildRates = _types.SdcRawGuildRates
+        SdcRawGuildRates = _types.SdcRawGuildRates()
 
         SdcRawGuildRates.rates = data
 
@@ -110,7 +110,7 @@ class Monitoring:
         _id = int(_id)
 
         raw = await self.fetch_guild_rate_raw(_id)
-        SdcGuildRates = _types.SdcGuildRates
+        SdcGuildRates = _types.SdcGuildRates()
         plus = []
         minus = []
 
@@ -135,7 +135,7 @@ class Monitoring:
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
 
-        SdcRawUserRates = _types.SdcRawUserRates
+        SdcRawUserRates = _types.SdcRawUserRates()
 
         SdcRawUserRates.rates = data
 
@@ -145,7 +145,7 @@ class Monitoring:
         _id = int(_id)
 
         raw = await self.fetch_user_rate_raw(_id)
-        SdcUserRates = _types.SdcUserRates
+        SdcUserRates = _types.SdcUserRates()
         plus = []
         minus = []
 

@@ -17,7 +17,7 @@ class NikaWarns:
             headers={"Authorization": f"SDC {self.SDC_token}"}
         )
 
-        SdcNikaWarns = _types.SdcRawNikaWarns
+        SdcNikaWarns = _types.SdcRawNikaWarns()
 
         SdcNikaWarns.id     = data["id"]
         SdcNikaWarns.type   = data["type"]
