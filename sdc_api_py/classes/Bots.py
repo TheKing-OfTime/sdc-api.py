@@ -9,6 +9,8 @@ class Global:
 class Bots:
 
     def __init__(self, bot: Bot, token):
+        if not token.startswith("SDC "):
+            token = "SDC " + token
         self.SDC_token = token
         self.bot = bot
         Global.SDC_token = self.SDC_token

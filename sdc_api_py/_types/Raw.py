@@ -41,12 +41,12 @@ class SdcRawGuild:
         SdcRawGuild.tags: "communication,programming,community"
     """
 
-    online:         int
-    members:        int
-    bot:            int
-    boost:          int
-    upCount:        int
-    tags:           str
+    online:         int = 0
+    members:        int = 0
+    bot:            int = 0
+    boost:          int = 0
+    upCount:        int = 0
+    tags:           str = None
     owner:          str = None
     avatar:         str = None
     lang:           str = None
@@ -72,7 +72,7 @@ class SdcRawGuildRates:
         "333333333333333333": 1
     }
     """
-    rates: dict
+    rates: dict = field(default={})
 
 
 @dataclass
@@ -89,7 +89,7 @@ class SdcRawUserRates:
         "333333333333333333": 1
     }
     """
-    rates: dict
+    rates: dict = field(default={})
 
 
 @dataclass
@@ -101,7 +101,7 @@ class SdcRawGuildPlace:
 
     SdcRawGuildPlace.place: 123
     """
-    place: int
+    place: int = 0
 
 
 @dataclass
@@ -115,6 +115,6 @@ class SdcRawNikaWarns:
     SdcRawGuildPlace.type: "user"
     SdcRawGuildPlace.warns: 3
     """
-    id:     int
-    type:   str
-    warns:  int
+    id:     int = 0
+    type:   str = ''
+    warns:  int = 0

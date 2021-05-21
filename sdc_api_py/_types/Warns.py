@@ -12,6 +12,6 @@ class SdcRawNikaWarns:
     SdcGuildPlace.type: "user"
     SdcGuildPlace.warns: 3
     """
-    id:     int
-    type:   str
-    warns:  int
+    id:     int = 0
+    type:   str = ''
+    warns:  int = 0

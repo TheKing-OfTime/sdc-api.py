@@ -1,6 +1,6 @@
-import sdc_api._types as _types
+from .. import _types
 import time
-from sdc_api.classes.Lib import Querier
+from .Lib import Querier
 
 
 class NikaWarns:
@@ -19,7 +19,7 @@ class NikaWarns:
 
         data = await response.json()
 
-        SdcNikaWarns = _types.SdcRawNikaWarns
+        SdcNikaWarns = _types.SdcRawNikaWarns()
 
         SdcNikaWarns.id     = data["id"]
         SdcNikaWarns.type   = data["type"]

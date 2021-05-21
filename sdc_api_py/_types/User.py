@@ -14,11 +14,7 @@ class SdcUserRates:
     SdcGuildRates.minus_count: 15                                # количество гильдий которым пользователь поставил "-"
     """
 
-    plus:           list
-    minus:          list
-    plus_count:     int = field(init=False)
-    minus_count:    int = field(init=False)
-
-    def __post_init__(self):
-        self.plus_count = len(self.plus)
-        self.minus_count = len(self.minus)
+    plus:           list = field(default=[])
+    minus:          list = field(default=[])
+    plus_count:     int = 0
+    minus_count:    int = 0

@@ -16,7 +16,7 @@ class Monitoring(Cog):
         try:
             res = await self.querier.execute_post_query(
                 f"https://api.server-discord.com/v2/bots/{self.bot.user.id}/stats",
-                headers={"Authorization": f"SDC {Global.SDC_token}"},
+                headers={"Authorization": f"{Global.SDC_token}"},
                 data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
             )
 

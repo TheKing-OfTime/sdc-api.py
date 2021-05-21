@@ -7,17 +7,17 @@ class SdcGuildStatus:
     """
     Тип данных хранящий обработанную информацию о значках гильдии.
     """
-    sitedev:    bool
-    verified:   bool
-    partner:    bool
-    favorite:   bool
-    bughunter:  bool
-    easteregg:  bool
-    botdev:     bool
-    youtube:    bool
-    twitch:     bool
-    spamhunt:   bool
-    raw: SdcRawGuildStatus = SdcRawGuildStatus
+    sitedev:    bool = False
+    verified:   bool = False
+    partner:    bool = False
+    favorite:   bool = False
+    bughunter:  bool = False
+    easteregg:  bool = False
+    botdev:     bool = False
+    youtube:    bool = False
+    twitch:     bool = False
+    spamhunt:   bool = False
+    raw: SdcRawGuildStatus = SdcRawGuildStatus()
 
 
 @dataclass
@@ -41,12 +41,12 @@ class SdcGuild:
         SdcRawGuild.upCount: 299
         SdcRawGuild.tags: ["communication", "programming", "community"]
     """
-    id:             int
-    online:         int
-    members:        int
-    bot:            int
-    boost:          int
-    upCount:        int
+    id:             int = 0
+    online:         int = 0
+    members:        int = 0
+    bot:            int = 0
+    boost:          int = 0
+    upCount:        int = 0
     tags:           list = field(default=list)
     avatar:         str = None
     lang:           str = "ru"
@@ -54,7 +54,7 @@ class SdcGuild:
     description:    str = None
     invite:         str = None
     owner:          str = None
-    status:         SdcGuildStatus = SdcGuildStatus
+    status:         SdcGuildStatus = SdcGuildStatus()
 
 
 @dataclass
@@ -69,10 +69,10 @@ class SdcGuildRates:
     SdcGuildRates.plus_count: 15                                 # количество пользователей поставивших "+"
     SdcGuildRates.minus_count: 15                                # количество пользователей поставивших "-"
     """
-    plus:           list
-    minus:          list
-    plus_count:     int
-    minus_count:    int
+    plus:           list = field(default=[])
+    minus:          list = field(default=[])
+    plus_count:     int = 0
+    minus_count:    int = 0
 
 
 @dataclass
@@ -84,5 +84,5 @@ class SdcGuildPlace:
 
     SdcGuildPlace.place: 123
     """
-    place: int
+    place: int = 0
 
