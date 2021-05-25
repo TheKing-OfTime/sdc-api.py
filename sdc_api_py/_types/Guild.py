@@ -47,7 +47,7 @@ class SdcGuild:
     bot:            int = 0
     boost:          int = 0
     upCount:        int = 0
-    tags:           list = field(default=list)
+    tags:           list = field(default_factory=list)
     avatar:         str = None
     lang:           str = "ru"
     name:           str = None
@@ -69,8 +69,8 @@ class SdcGuildRates:
     SdcGuildRates.plus_count: 15                                 # количество пользователей поставивших "+"
     SdcGuildRates.minus_count: 15                                # количество пользователей поставивших "-"
     """
-    plus:           list = field(default=[])
-    minus:          list = field(default=[])
+    plus:           list = field(default_factory=[])
+    minus:          list = field(default_factory=[])
     plus_count:     int = 0
     minus_count:    int = 0
 

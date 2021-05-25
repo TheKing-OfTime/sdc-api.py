@@ -72,7 +72,7 @@ class SdcRawGuildRates:
         "333333333333333333": 1
     }
     """
-    rates: dict = field(default={})
+    rates: dict = field(default_factory={})
 
 
 @dataclass
@@ -89,7 +89,7 @@ class SdcRawUserRates:
         "333333333333333333": 1
     }
     """
-    rates: dict = field(default={})
+    rates: dict = field(default_factory={})
 
 
 @dataclass
