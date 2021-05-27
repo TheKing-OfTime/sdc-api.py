@@ -1,1 +1,1 @@
-from default_extension import *
+from .default_extension import *

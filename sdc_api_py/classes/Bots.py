@@ -23,7 +23,7 @@ class Bots:
 
         Global._time = time
         try:
-            self.bot.load_extension("sdc_api_py.classes.extension.default_extension")
+            self.bot.load_extension(".classes.extension", package="sdc_api_py")
         except Exception as e:
             print(e)
         else:
