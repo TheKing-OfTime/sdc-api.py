@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="sdc_api_py",
-    version="1.2.4",
+    version="1.2.5",
     author="TheKingOfTime",
     author_email="artem.matvienko0@gmai.com",
     description="An async wrapper for Server-Discord.Com API",

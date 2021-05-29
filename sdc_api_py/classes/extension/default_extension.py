@@ -10,6 +10,7 @@ class Monitoring(Cog):
     def __init__(self, bot: discord.ext.commands.Bot):
         self.bot = bot
         self.querier = Querier()
+        self.monitorings.start()
 
     @loop(minutes=Global._time)
     async def monitorings(self):
