@@ -22,6 +22,8 @@ class Querier:
         try:
             async with aiohttp.ClientSession() as session:
                 response = await session.get(*args, **kwargs)
+                if int(response.status) != 200:
+                    print(f"SDC Произошла ошибка: {response.status} {response.json()}")
         finally:
             asyncio.get_event_loop().create_task(self._wait_ratelimit())
 
@@ -34,6 +36,8 @@ class Querier:
         try:
             async with aiohttp.ClientSession() as session:
                 response = await session.post(*args, **kwargs)
+                if int(response.status) != 200:
+                    print(f"SDC Произошла ошибка: {response.status} {response.json()}")
         finally:
             asyncio.get_event_loop().create_task(self._wait_ratelimit())
 
