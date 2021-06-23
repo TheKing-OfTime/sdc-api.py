@@ -41,4 +41,4 @@ class Querier:
 
     async def _wait_ratelimit(self):
         await asyncio.sleep(self.RATELIMIT_SECONDS)
-        await self.query_lock.release()
+        self.query_lock.release()

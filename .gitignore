@@ -1,3 +1,4 @@
 # Ignore pycache garbage
 *__pycache__/
 .idea
+upload_pypi.bat
