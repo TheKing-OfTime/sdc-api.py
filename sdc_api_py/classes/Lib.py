@@ -5,9 +5,9 @@ import aiohttp
 class Querier:
     """
     Объект для последовательного выполнения запросов с кулдауном.
-    На данный момент, кулдаун составляет 2 секунды (ограничение API)
+    На данный момент, кулдаун составляет 30 секунды (ограничение API)
     """
-    RATELIMIT_SECONDS:  int = 2
+    RATELIMIT_DEFAULT_SECONDS:  int = 30
     query_lock:         asyncio.Lock = asyncio.Lock()
 
     def __new__(cls):
@@ -43,6 +43,7 @@ class Querier:
 
         return response
 
-    async def _wait_ratelimit(self):
-        await asyncio.sleep(self.RATELIMIT_SECONDS)
+    async def _wait_ratelimit(self, execution_type:str = "default"):
+        if execution_type == "default":
+            await asyncio.sleep(self.RATELIMIT_DEFAULT_SECONDS)
         self.query_lock.release()
