@@ -66,6 +66,6 @@ class BotsSDC(commands.Cog):
     async def on_ready(self):
         bots = sdc_api_py.Bots(self.bot, SDC_TOKEN)
         bots.create_loop()  #Как аргумент можно использовать время в минутах. Раз в это количество минут будет отправляться статистика.
-
+                            #По умолчанию 60 минут. Минимальный порог 30 минут.
 bot.add_cog(BotsSDC(bot))
 ```
