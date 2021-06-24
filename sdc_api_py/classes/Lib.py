@@ -5,9 +5,10 @@ import aiohttp
 class Querier:
     """
     Объект для последовательного выполнения запросов с кулдауном.
-    На данный момент, кулдаун составляет 30 секунды (ограничение API)
+    На данный момент, кулдаун составляет 2 секунды (ограничение API)
     """
-    RATELIMIT_DEFAULT_SECONDS:  int = 30
+    RATELIMIT_DEFAULT_SECONDS:  int = 2
+    RATELIMIT_BOTS_SECONDS:  int = 30
     query_lock:         asyncio.Lock = asyncio.Lock()
 
     def __new__(cls):
@@ -39,11 +40,13 @@ class Querier:
                 if int(response.status) != 200:
                     print(f"SDC Произошла ошибка: {response.status} {response.json()}")
         finally:
-            asyncio.get_event_loop().create_task(self._wait_ratelimit())
+            asyncio.get_event_loop().create_task(self._wait_ratelimit("bots"))
 
         return response
 
     async def _wait_ratelimit(self, execution_type:str = "default"):
         if execution_type == "default":
             await asyncio.sleep(self.RATELIMIT_DEFAULT_SECONDS)
+        elif execution_type == "bots":
+            await asyncio.sleep(self.RATELIMIT_BOTS_SECONDS)
         self.query_lock.release()
