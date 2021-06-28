@@ -2,3 +2,8 @@
 *__pycache__/
 .idea
 upload_pypi.bat
+server
+dist
+build
+sdc_api_py.egg-info
+pyproject.toml

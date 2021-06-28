@@ -26,20 +26,20 @@ class SdcGuild:
     Тип данных хранящий обработанную информацию о гильдии.
 
     Пример:
-        SdcRawGuild.id: 0
-        SdcRawGuild.avatar: "a_8f05534e4f750cf535988ae8a91fe9ad",
-        SdcRawGuild.lang: "ru"
-        SdcRawGuild.name: "SD.Community"
-        SdcRawGuild.description: "Описание сервера"
-        SdcRawGuild.invite: "https://discord.gg/ABCDEF",
-        SdcRawGuild.owner: "MegaVasiliy007#3301",
-        SdcRawGuild.online: 250
-        SdcRawGuild.members: 500
-        SdcRawGuild.bot: 1
-        SdcRawGuild.boost: 3
-        SdcRawGuild.status: SdcGuildStatus
-        SdcRawGuild.upCount: 299
-        SdcRawGuild.tags: ["communication", "programming", "community"]
+        SdcGuild.id: 1234567890
+        SdcGuild.avatar: "https://cdn.discordapp.com/icons/{SdcGuild.id}/a_8f05534e4f750cf535988ae8a91fe9ad.gif",
+        SdcGuild.lang: "ru"
+        SdcGuild.name: "SD.Community"
+        SdcGuild.description: "Описание сервера"
+        SdcGuild.invite: "https://discord.gg/ABCDEF",
+        SdcGuild.owner: "MegaVasiliy007#3301",
+        SdcGuild.online: 250
+        SdcGuild.members: 500
+        SdcGuild.bot: 1
+        SdcGuild.boost: 3
+        SdcGuild.status: SdcGuildStatus
+        SdcGuild.upCount: 299
+        SdcGuild.tags: ["communication", "programming", "community"]
     """
     id:             int = 0
     online:         int = 0
