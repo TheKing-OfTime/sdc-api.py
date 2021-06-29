@@ -23,9 +23,9 @@ class Monitoring(Cog):
                     headers={"Authorization": f"{Global.SDC_token}"},
                     data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
                 )
-
-                print(f"SDC Status updated: {await res.json()}")
                 self.last_server_count = server_count
+                print(f"SDC Status updated: {await res.json()}")
+
             except Exception as error:
                 print(error)
         else:
