@@ -28,4 +28,4 @@ class Bots:
         except Exception as e:
             print(e)
         else:
-            print(f"SDC_API: Цикл успешно запущен. Статистика будет обновляться каждые {Global._time} минут")
+            print(f"SDC: Цикл успешно запущен. Статистика будет обновляться каждые {Global._time} минут")
