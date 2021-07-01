@@ -1,5 +1,4 @@
 from .. import _types
-import time
 from .Lib import Querier
 
 
@@ -23,6 +22,8 @@ def convert_to_SdcGuildStatus(raw: _types.SdcRawGuildStatus):
 
 class Monitoring:
     def __init__(self, token: str):
+        if not token.startswith("SDC "):
+            token = "SDC " + token
         self.SDC_token = token
         self.querier = Querier()
 
@@ -31,7 +32,7 @@ class Monitoring:
 
         response = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}",
-            headers={"Authorization": f"SDC {self.SDC_token}"}
+            headers={"Authorization": f"{self.SDC_token}"}
         )
 
         data = await response.json()
@@ -85,7 +86,7 @@ class Monitoring:
 
         response = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}/place",
-            headers={"Authorization": f"SDC {self.SDC_token}"}
+            headers={"Authorization": f"{self.SDC_token}"}
         )
 
         data = await response.json()
@@ -101,7 +102,7 @@ class Monitoring:
 
         response = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}/rated",
-            headers={"Authorization": f"SDC {self.SDC_token}"}
+            headers={"Authorization": f"{self.SDC_token}"}
         )
 
         data = await response.json()
@@ -138,7 +139,7 @@ class Monitoring:
 
         response = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/guild/{_id}/rated",
-            headers={"Authorization": f"SDC {self.SDC_token}"}
+            headers={"Authorization": f"{self.SDC_token}"}
         )
 
         data = await response.json()

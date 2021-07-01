@@ -1,11 +1,12 @@
 from .. import _types
-import time
 from .Lib import Querier
 
 
 class NikaWarns:
 
     def __init__(self, token):
+        if not token.startswith("SDC "):
+            token = "SDC " + token
         self.SDC_token = token
         self.querier = Querier()
 
@@ -14,7 +15,7 @@ class NikaWarns:
 
         response = await self.querier.execute_get_query(
             f"https://api.server-discord.com/v2/warns/{_id}",
-            headers={"Authorization": f"SDC {self.SDC_token}"}
+            headers={"Authorization": f"{self.SDC_token}"}
         )
 
         data = await response.json()

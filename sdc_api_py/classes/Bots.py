@@ -1,4 +1,5 @@
-from discord.ext.commands import Bot
+from typing import Union
+from discord.ext.commands import Bot, AutoShardedBot
 
 
 class Global:
@@ -8,7 +9,7 @@ class Global:
 
 class Bots:
 
-    def __init__(self, bot: Bot, token):
+    def __init__(self, bot: Union[Bot, AutoShardedBot], token: str):
         if not token.startswith("SDC "):
             token = "SDC " + token
         self.SDC_token = token
