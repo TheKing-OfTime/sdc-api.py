@@ -24,10 +24,15 @@ class Monitoring(Cog):
                     data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
                 )
                 self.last_server_count = server_count
-                print(f"SDC Status updated: {await res.json()}")
+                data = await res.json()
+                status = data["status"]
+                if status is True:
+                    print(f"SDC: Статистика отправленна")
+                else:
+                    print(f"SDC: Произошла ошибка при отправке статистики: {data}")
 
             except Exception as error:
-                print(error)
+                print(f"SDC: Произошла ошибка при отправке статистики: {error}")
         else:
             print("SDC: Количество серверов не изменилось. Отправка статистики пропущена")
 
