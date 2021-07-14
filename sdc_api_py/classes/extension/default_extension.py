@@ -27,14 +27,16 @@ class Monitoring(Cog):
                 data = await res.json()
                 status = data["status"]
                 if status is True:
-                    print(f"SDC: Статистика отправленна")
+                    if Global.logging_level:
+                        print(f"SDC: Статистика отправлена")
                 else:
                     print(f"SDC: Произошла ошибка при отправке статистики: {data}")
 
             except Exception as error:
                 print(f"SDC: Произошла ошибка при отправке статистики: {error}")
         else:
-            print("SDC: Количество серверов не изменилось. Отправка статистики пропущена")
+            if Global.logging_level:
+                print("SDC: Количество серверов не изменилось. Отправка статистики пропущена")
 
 
 def setup(bot):

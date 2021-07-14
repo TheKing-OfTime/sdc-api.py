@@ -5,16 +5,18 @@ from discord.ext.commands import Bot, AutoShardedBot
 class Global:
     SDC_token = ""
     _time = 60
+    logging_level = None
 
 
 class Bots:
 
-    def __init__(self, bot: Union[Bot, AutoShardedBot], token: str):
+    def __init__(self, bot: Union[Bot, AutoShardedBot], token: str, logging:bool = True):
         if not token.startswith("SDC "):
             token = "SDC " + token
         self.SDC_token = token
         self.bot = bot
         Global.SDC_token = self.SDC_token
+        Global.logging_level = logging
 
     def create_loop(self, time=60):
         time = int(time)
