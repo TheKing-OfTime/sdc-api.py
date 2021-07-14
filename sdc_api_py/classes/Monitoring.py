@@ -21,7 +21,7 @@ def convert_to_SdcGuildStatus(raw: _types.SdcRawGuildStatus):
 
 
 class Monitoring:
-    def __init__(self, token: str, logging:bool = True):
+    def __init__(self, token: str):
         if not token.startswith("SDC "):
             token = "SDC " + token
         self.SDC_token = token

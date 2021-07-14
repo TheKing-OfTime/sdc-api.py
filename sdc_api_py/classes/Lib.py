@@ -25,6 +25,12 @@ class Querier:
                 response = await session.get(*args, **kwargs)
                 if int(response.status) != 200:
                     print(f"SDC: Произошла ошибка: {response.status} {await response.json()}")
+                else:
+                    try:
+                        if await response.json()["error"]["type"] == "Unauthorized":
+                            print(f"SDC: Указан неверный ключ авторизации")
+                    except:
+                        pass
         finally:
             asyncio.get_event_loop().create_task(self._wait_ratelimit())
 
