@@ -31,11 +31,11 @@ class SdcGuild:
         SdcGuild.lang: "ru"
         SdcGuild.name: "SD.Community"
         SdcGuild.description: "Описание сервера"
-        SdcGuild.invite: "https://discord.gg/ABCDEF",
-        SdcGuild.owner: "MegaVasiliy007#3301",
+        SdcGuild.invite: "https://discord.gg/ABCDEF"
+        SdcGuild.owner: "MegaVasiliy007#3301"
         SdcGuild.online: 250
         SdcGuild.members: 500
-        SdcGuild.bot: 1
+        SdcGuild.bot: 1                             Есть ли на сервере бот SD.C Monitoring#9896
         SdcGuild.boost: 3
         SdcGuild.status: SdcGuildStatus
         SdcGuild.upCount: 299

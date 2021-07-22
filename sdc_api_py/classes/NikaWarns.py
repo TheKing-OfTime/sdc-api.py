@@ -20,7 +20,7 @@ class NikaWarns:
 
         data = await response.json()
 
-        SdcNikaWarns = _types.SdcRawNikaWarns()
+        SdcNikaWarns = _types.SdcNikaWarns()
 
         SdcNikaWarns.id     = data["id"]
         SdcNikaWarns.type   = data["type"]

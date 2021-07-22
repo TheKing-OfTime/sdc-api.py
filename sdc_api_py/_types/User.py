@@ -8,10 +8,10 @@ class SdcUserRates:
 
     Пример:
 
-    SdcGuildRates.plus: [000000000000000000, 111111111111111111] # id гильдий
-    SdcGuildRates.plus: [222222222222222222, 333333333333333333] # id гильдий
-    SdcGuildRates.plus_count: 15                                 # количество гильдий которым пользователь поставил "+"
-    SdcGuildRates.minus_count: 15                                # количество гильдий которым пользователь поставил "-"
+    SdcUserRates.plus: [000000000000000000, 111111111111111111] # id гильдий
+    SdcUserRates.plus: [222222222222222222, 333333333333333333] # id гильдий
+    SdcUserRates.plus_count: 15                                 # количество гильдий которым пользователь поставил "+"
+    SdcUserRatess.minus_count: 15                                # количество гильдий которым пользователь поставил "-"
     """
 
     plus:           list = field(default_factory=[])

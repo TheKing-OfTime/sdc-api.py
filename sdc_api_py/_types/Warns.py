@@ -2,15 +2,15 @@ from dataclasses import dataclass, field
 
 
 @dataclass
-class SdcRawNikaWarns:
+class SdcNikaWarns:
     """
     Тип данных хранящий обработанную информацию о количестве варнов в системе Nika.
 
     Пример:
 
-    SdcGuildPlace.id: 000000000000000000
-    SdcGuildPlace.type: "user"
-    SdcGuildPlace.warns: 3
+    SdcRawNikaWarns.id: 000000000000000000
+    SdcRawNikaWarns.type: "user"
+    SdcRawNikaWarns.warns: 3
     """
     id:     int = 0
     type:   str = ''
