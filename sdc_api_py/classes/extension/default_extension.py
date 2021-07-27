@@ -25,7 +25,7 @@ class Monitoring(Cog):
                     data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
                 )
                 self.last_server_count = server_count
-                if await res.content_type == 'application/json':
+                if res.content_type == 'application/json':
                     data = await res.json()
                 else:
                     raise aiohttp.abc.HTTPException
