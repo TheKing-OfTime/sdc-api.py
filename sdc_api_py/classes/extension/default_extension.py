@@ -1,3 +1,4 @@
+import aiohttp.abc
 import discord
 
 from ..Bots import Global
@@ -13,7 +14,7 @@ class Monitoring(Cog):
         self.monitorings.start()
         self.last_server_count = -1
 
-    @loop(minutes=Global._time)
+    @loop(minutes=Global.time)
     async def monitorings(self):
         server_count = len(self.bot.guilds)
         if server_count != self.last_server_count:
@@ -24,7 +25,10 @@ class Monitoring(Cog):
                     data={"shards": self.bot.shard_count or 1, "servers": len(self.bot.guilds)}
                 )
                 self.last_server_count = server_count
-                data = await res.json()
+                if await res.content_type == 'application/json':
+                    data = await res.json()
+                else:
+                    raise aiohttp.abc.HTTPException
                 status = data["status"]
                 if status is True:
                     if Global.logging_level:
@@ -32,8 +36,10 @@ class Monitoring(Cog):
                 else:
                     print(f"SDC: Произошла ошибка при отправке статистики: {data}")
 
-            except Exception as error:
-                print(f"SDC: Произошла ошибка при отправке статистики: {error}")
+            except aiohttp.abc.HTTPException:
+                print(f"SDC: Произошла ошибка при отправке статистики: API временно недоступно. Повторное подключение через {Global.time}")
+            except Exception as err:
+                print(f"SDC: Произошла неизвестаня ошибка при отправке статистики: {err}")
         else:
             if Global.logging_level:
                 print("SDC: Количество серверов не изменилось. Отправка статистики пропущена")

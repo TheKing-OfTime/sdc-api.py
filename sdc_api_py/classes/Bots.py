@@ -4,7 +4,7 @@ from discord.ext.commands import Bot, AutoShardedBot
 
 class Global:
     SDC_token = ""
-    _time = 60
+    time = 60
     logging_level = None
 
 
@@ -24,10 +24,10 @@ class Bots:
         if time < 30:
             time = 30
 
-        Global._time = time
+        Global.time = time
         try:
             self.bot.load_extension(".classes.extension", package="sdc_api_py")
         except Exception as e:
             print(e)
         else:
-            print(f"SDC: Цикл успешно запущен. Статистика будет обновляться каждые {Global._time} минут")
+            print(f"SDC: Цикл успешно запущен. Статистика будет обновляться каждые {Global.time} минут")
