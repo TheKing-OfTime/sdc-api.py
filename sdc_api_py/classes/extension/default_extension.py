@@ -28,7 +28,7 @@ class Monitoring(Cog):
                 if res.content_type == 'application/json':
                     data = await res.json()
                 else:
-                    raise aiohttp.abc.HTTPException
+                    raise RuntimeError
                 status = data["status"]
                 if status is True:
                     if Global.logging_level:
@@ -36,7 +36,7 @@ class Monitoring(Cog):
                 else:
                     print(f"SDC: Произошла ошибка при отправке статистики: {data}")
 
-            except aiohttp.abc.HTTPException:
+            except RuntimeError:
                 print(f"SDC: Произошла ошибка при отправке статистики: API временно недоступно. Повторное подключение через {Global.time}")
             except Exception as err:
                 print(f"SDC: Произошла неизвестаня ошибка при отправке статистики: {err}")
