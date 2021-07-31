@@ -10,7 +10,7 @@ class NikaWarns:
         self.SDC_token = token
         self.querier = Querier()
 
-    async def fetch_warns(self, _id):
+    async def fetch_warns(self, _id:int):
         _id = int(_id)
 
         response = await self.querier.execute_get_query(

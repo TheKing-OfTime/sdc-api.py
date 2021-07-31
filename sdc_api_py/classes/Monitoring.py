@@ -113,7 +113,7 @@ class Monitoring:
 
         return SdcRawGuildRates
 
-    async def get_guild_rate(self, _id):
+    async def get_guild_rate(self, _id: int):
         _id = int(_id)
 
         raw = await self.fetch_guild_rate_raw(_id)
@@ -150,7 +150,7 @@ class Monitoring:
 
         return SdcRawUserRates
 
-    async def get_user_rate(self, _id):
+    async def get_user_rate(self, _id: int):
         _id = int(_id)
 
         raw = await self.fetch_user_rate_raw(_id)

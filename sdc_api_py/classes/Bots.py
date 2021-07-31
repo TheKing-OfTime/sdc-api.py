@@ -18,7 +18,7 @@ class Bots:
         Global.SDC_token = self.SDC_token
         Global.logging_level = logging
 
-    def create_loop(self, time=60):
+    def create_loop(self, time:int = 60):
         time = int(time)
 
         if time < 30:
