@@ -124,7 +124,7 @@ class Monitoring:
         for item in raw.rates.items():
             if item[1] == 1:
                 plus.append(item[0])
-            if item[1] == -1:
+            elif item[1] == -1:
                 minus.append(item[0])
 
         SdcGuildRates.plus          = plus
@@ -161,7 +161,7 @@ class Monitoring:
         for item in raw.rates.items():
             if item[1] == 1:
                 plus.append(item[0])
-            if item[1] == -1:
+            elif item[1] == -1:
                 minus.append(item[0])
 
         SdcUserRates.plus           = plus
