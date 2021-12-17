@@ -1,20 +1,20 @@
-import aiohttp.abc
-import discord
+import importlib
 
 from ..Bots import Global
 from ..Lib import Querier
-from discord.ext.tasks import loop
-from discord.ext.commands import Cog
 
+discord = importlib.import_module(f'{Global.fork_name}')
+tasks = importlib.import_module(f'{Global.fork_name}.ext.tasks')
+commands = importlib.import_module(f'{Global.fork_name}.ext.commands')
 
-class Monitoring(Cog):
-    def __init__(self, bot: discord.ext.commands.Bot):
+class Monitoring(commands.Cog):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.querier = Querier()
         self.monitorings.start()
         self.last_server_count = -1
 
-    @loop(minutes=Global.time)
+    @tasks.loop(minutes=Global.time)
     async def monitorings(self):
         server_count = len(self.bot.guilds)
         if server_count != self.last_server_count:
