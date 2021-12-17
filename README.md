@@ -58,8 +58,9 @@ class BotsSDC(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_ready(self):
-        bots = sdc_api_py.Bots(self.bot, SDC_TOKEN, logging) # Аргумент logging опциональный. По умолчанию True.
+    async def on_ready(self):                       #Аргумент fork_name опциональный. Укажите название используемого форка discord.py если таковой используется.
+                                                    #Название нужно указыать то, с помощью которого вы импортировали форк в свой проект.
+        bots = sdc_api_py.Bots(self.bot, SDC_TOKEN, fork_name, logging) # Аргумент logging опциональный. По умолчанию True.
         bots.create_loop()  #Как аргумент можно использовать время в минутах. Раз в это количество минут будет отправляться статистика.
                             #По умолчанию 60 минут. Минимальный порог 30 минут.
 bot.add_cog(BotsSDC(bot))
