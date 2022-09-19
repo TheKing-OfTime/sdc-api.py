@@ -39,7 +39,7 @@ class Monitoring(commands.Cog):
             except RuntimeError:
                 print(f"SDC: Произошла ошибка при отправке статистики: API временно недоступно. Повторное подключение через {Global.time}")
             except Exception as err:
-                print(f"SDC: Произошла неизвестаня ошибка при отправке статистики: {err}")
+                print(f"SDC: Произошла неизвестная ошибка при отправке статистики: {err}")
         else:
             if Global.logging_level:
                 print("SDC: Количество серверов не изменилось. Отправка статистики пропущена")
