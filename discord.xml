@@ -15,13 +15,14 @@
     <option name="projectTime" value="APPLICATION" />
     <option name="fileDetailsCustom" value="" />
     <option name="fileStateCustom" value="" />
+    <option name="fileIconLargeText" value="PROJECT_NAME" />
     <option name="fileIconLargeTextCustom" value="" />
     <option name="fileIconSmallTextCustom" value="" />
     <option name="fileTime" value="APPLICATION" />
     <option name="filePrefixEnabled" value="true" />
     <option name="fileHideVcsIgnored" value="false" />
     <option name="applicationType" value="IDE_EDITION" />
-    <option name="theme" value="material" />
+    <option name="theme" value="atom" />
     <option name="applicationLastUpdateNotification" value="1.10.0" />
   </component>
 </application>
